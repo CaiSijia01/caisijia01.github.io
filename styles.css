@@ -388,6 +388,12 @@ h2 {
   padding: 0.9rem 1rem 0.95rem;
 }
 
+.timeline-card p.advisor {
+  margin-left: 20px;   
+  font-style: italic;  
+  color: #333;         
+}
+
 .meta {
   margin: 0 0 0.4rem;
   color: var(--muted);
