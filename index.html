@@ -1,10 +1,145 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Sijia Cai</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sijia Cai | Astronomy PhD Student</title>
+  <meta
+    name="description"
+    content="Personal academic website of Sijia Cai, an astronomy PhD student."
+  />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <h1>Hello, I'm Sijia.</h1>
-    <p>This is my academic homepage.</p>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="site-title" href="#top">Sijia Cai</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#publications">Publications</a>
+        <a href="#cv">CV</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero sectionless">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Astronomy PhD Student</p>
+          <h1>Sijia Cai</h1>
+          <p class="intro">
+            I study galaxy evolution with multi-wavelength observations and survey-scale data analysis,
+            with a focus on how star formation and environment shape galaxy growth across cosmic time.
+          </p>
+        </div>
+
+        <figure class="profile-frame">
+          <img src="profile.jpg" alt="Portrait of Sijia Cai" class="profile-image" />
+          <figcaption>Add <code>profile.jpg</code> to the repository root to show your photo.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container narrow">
+        <h2>About</h2>
+        <p>
+          I am currently pursuing a PhD in Astronomy at <strong>[University Name]</strong>.
+          My research integrates observations, statistical modeling, and physical interpretation
+          to understand the evolution of galaxies from the local universe to intermediate redshift.
+        </p>
+        <p>
+          <strong>Research interests:</strong> galaxy evolution, star formation histories,
+          stellar populations, observational cosmology, and data-intensive astrophysics.
+        </p>
+      </div>
+    </section>
+
+    <section id="publications" class="section">
+      <div class="container narrow">
+        <h2>Publications</h2>
+        <p class="section-note">Selected papers. Replace these placeholders with your real publications.</p>
+
+        <ol class="publication-list">
+          <li>
+            <article class="publication-item">
+              <h3>[Paper Title One]</h3>
+              <p class="meta">S. Cai, Coauthor A., Coauthor B. (2026), <em>Journal Name</em></p>
+              <p class="abstract">
+                Brief abstract summary (2–4 lines): describe the question, method, and key finding.
+              </p>
+              <p class="pub-link-row">
+                <a href="https://ui.adsabs.harvard.edu/" target="_blank" rel="noopener noreferrer">NASA/ADS entry</a>
+              </p>
+            </article>
+          </li>
+
+          <li>
+            <article class="publication-item">
+              <h3>[Paper Title Two]</h3>
+              <p class="meta">S. Cai, Coauthor C., Coauthor D. (2025), <em>Journal Name</em></p>
+              <p class="abstract">
+                Brief abstract summary (2–4 lines): describe the dataset, analysis approach,
+                and how the result contributes to galaxy evolution studies.
+              </p>
+              <p class="pub-link-row">
+                <a href="https://ui.adsabs.harvard.edu/" target="_blank" rel="noopener noreferrer">NASA/ADS entry</a>
+              </p>
+            </article>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="cv" class="section">
+      <div class="container narrow">
+        <h2>CV</h2>
+        <div class="timeline" aria-label="Academic CV timeline">
+          <article class="timeline-item">
+            <header>
+              <h3>Education</h3>
+              <p class="meta">2022–Present</p>
+            </header>
+            <p>PhD in Astronomy, [University Name]</p>
+            <p>BSc/MS in [Field], [Institution Name]</p>
+          </article>
+
+          <article class="timeline-item">
+            <header>
+              <h3>Proposals</h3>
+              <p class="meta">2024–Present</p>
+            </header>
+            <p>Contributor / Co-I on telescope proposals for [Facility Name(s)].</p>
+          </article>
+
+          <article class="timeline-item">
+            <header>
+              <h3>Conference Participation</h3>
+              <p class="meta">2023–Present</p>
+            </header>
+            <p>Talks and posters at AAS meetings and related astronomy conferences.</p>
+          </article>
+
+          <article class="timeline-item">
+            <header>
+              <h3>Teaching Assistant Experience</h3>
+              <p class="meta">2022–2025</p>
+            </header>
+            <p>TA for introductory astronomy and observational methods courses.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container narrow">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:yourname@university.edu">yourname@university.edu</a></p>
+        <p>NASA/ADS profile: <a href="https://ui.adsabs.harvard.edu/" target="_blank" rel="noopener noreferrer">ui.adsabs.harvard.edu</a></p>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
