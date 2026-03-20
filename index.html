@@ -1,162 +1,64 @@
 <!DOCTYPE html>
-<html>
 <html lang="en">
 <head>
-    <title>Sijia Cai</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sijia Cai</title>
+  <title>Sijia Cai | Academic Home</title>
   <meta
     name="description"
-    content="Personal academic website of Sijia Cai, Ph.D. student in astronomy at Tsinghua University."
+    content="Personal academic website of Sijia Cai."
   />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <h1>Hello, I'm Sijia.</h1>
-    <p>This is my academic homepage.</p>
   <header class="site-header">
     <div class="container nav-wrap">
-      <a class="site-title" href="#about-page">Sijia Cai</a>
+      <a class="site-title" href="index.html">Sijia Cai</a>
       <nav class="site-nav" aria-label="Main navigation">
-        <a href="#about-page">About</a>
-        <a href="#publications-page">Publications</a>
-        <a href="#cv-page">CV</a>
-        <a href="#contact-page">Contact</a>
+        <a class="active" href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="publications.html">Publications</a>
+        <a href="cv.html">CV</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main class="pages" aria-live="polite">
-    <section id="about-page" class="page">
-      <div class="container narrow">
-        <h1>Sijia Cai</h1>
-        <figure class="profile-frame">
-          <img src="profile.jpg" alt="Portrait of Sijia Cai" class="profile-image" />
-          <figcaption>Add <code>profile.jpg</code> to the repository root to show your photo.</figcaption>
-        </figure>
-        <p class="lead">
-          Hi, I’m Sijia Cai, a Ph.D. student in the Department of Astronomy at Tsinghua University.
-          My advisor is <a href="https://i.astro.tsinghua.edu.cn/~zcai/" target="_blank" rel="noopener noreferrer">Zheng Cai</a>.
-          My research primarily focuses on studying high-redshift galaxies using multi-wavelength
-          observations, aiming to advance our understanding of the early universe.
-        </p>
-      </div>
-      <div class="container narrow page-pagination" aria-label="About page pagination">
-        <a class="next" href="#publications-page">Next: Publications →</a>
+  <main class="container page-shell">
+    <section class="hero-card">
+      <p class="eyebrow">Academic Website</p>
+      <h1>Sijia Cai</h1>
+      <p class="lead">
+        Ph.D. student in astronomy. This site is organized into clean, separate pages so each
+        section feels focused and easy to explore.
+      </p>
+      <div class="cta-row">
+        <a class="button" href="about.html">Enter Website</a>
+        <a class="button button-soft" href="publications.html">View Timeline</a>
       </div>
     </section>
 
-    <section id="publications-page" class="page">
-      <div class="container narrow">
+    <section class="card-grid" aria-label="Site sections overview">
+      <article class="section-card">
+        <h2>About</h2>
+        <p>Research profile, interests, and background.</p>
+        <a href="about.html">Go to About →</a>
+      </article>
+      <article class="section-card">
         <h2>Publications</h2>
-        <p class="section-note">Selected papers (replace placeholders with your full publication list).</p>
-        <ol class="publication-list">
-          <li>
-            <article class="publication-item">
-              <h3>[Paper Title One]</h3>
-              <p class="meta">S. Cai, Coauthor A., Coauthor B. (2026), <em>Journal Name</em></p>
-              <p class="abstract">Brief abstract summary (2–4 lines): question, method, and main result.</p>
-              <p class="pub-link-row">
-                <a href="https://ui.adsabs.harvard.edu/" target="_blank" rel="noopener noreferrer">NASA/ADS entry</a>
-              </p>
-            </article>
-          </li>
-          <li>
-            <article class="publication-item">
-              <h3>[Paper Title Two]</h3>
-              <p class="meta">S. Cai, Coauthor C., Coauthor D. (2025), <em>Journal Name</em></p>
-              <p class="abstract">Brief abstract summary (2–4 lines): dataset, analysis, and scientific significance.</p>
-              <p class="pub-link-row">
-                <a href="https://ui.adsabs.harvard.edu/" target="_blank" rel="noopener noreferrer">NASA/ADS entry</a>
-              </p>
-            </article>
-          </li>
-        </ol>
-      </div>
-      <div class="container narrow page-pagination" aria-label="Publications page pagination">
-        <a class="prev" href="#about-page">← Previous: About</a>
-        <a class="next" href="#cv-page">Next: CV →</a>
-      </div>
-    </section>
-
-    <section id="cv-page" class="page">
-      <div class="container narrow">
+        <p>Chronological publication timeline with visual anchors.</p>
+        <a href="publications.html">Go to Publications →</a>
+      </article>
+      <article class="section-card">
         <h2>CV</h2>
-
-        <section class="cv-block" aria-label="Education timeline">
-          <h3>Education</h3>
-          <ol class="mini-timeline">
-            <li>
-              <p class="meta">Sept. 2023 – Present</p>
-              <p><strong>Tsinghua University</strong>, Beijing, China</p>
-              <p>Ph.D. Student (Department of Astronomy)</p>
-            </li>
-            <li>
-              <p class="meta">Sept. 2019 – June 2023</p>
-              <p><strong>Huazhong University of Science and Technology</strong>, Wuhan, China</p>
-              <p>Bachelor of Science (School of Physics)</p>
-            </li>
-          </ol>
-        </section>
-
-        <section class="cv-block" aria-label="Proposals timeline">
-          <h3>Proposals</h3>
-          <ol class="mini-timeline">
-            <li>
-              <p class="meta">2025–Present</p>
-              <p>Contributed to observing proposals on high-redshift galaxy programs.</p>
-            </li>
-            <li>
-              <p class="meta">2024–2025</p>
-              <p>Supported proposal preparation and target selection for multi-wavelength campaigns.</p>
-            </li>
-          </ol>
-        </section>
-
-        <section class="cv-block" aria-label="Conference participation timeline">
-          <h3>Conference Participation</h3>
-          <ol class="mini-timeline">
-            <li>
-              <p class="meta">2025–Present</p>
-              <p>Presented ongoing work on high-redshift galaxies at astronomy meetings.</p>
-            </li>
-            <li>
-              <p class="meta">2023–2024</p>
-              <p>Participated in workshops and poster sessions on galaxy formation and evolution.</p>
-            </li>
-          </ol>
-        </section>
-
-        <section class="cv-block" aria-label="Teaching assistant timeline">
-          <h3>Teaching Assistant Experience</h3>
-          <ol class="mini-timeline">
-            <li>
-              <p class="meta">2024–2025</p>
-              <p>TA for astronomy-related coursework, including tutorials and office hours.</p>
-            </li>
-            <li>
-              <p class="meta">2023–2024</p>
-              <p>Supported grading, classroom logistics, and student Q&A sessions.</p>
-            </li>
-          </ol>
-        </section>
-      </div>
-      <div class="container narrow page-pagination" aria-label="CV page pagination">
-        <a class="prev" href="#publications-page">← Previous: Publications</a>
-        <a class="next" href="#contact-page">Next: Contact →</a>
-      </div>
-    </section>
-
-    <section id="contact-page" class="page">
-      <div class="container narrow">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:yourname@mail.tsinghua.edu.cn">yourname@mail.tsinghua.edu.cn</a></p>
-        <p>NASA/ADS profile: <a href="https://ui.adsabs.harvard.edu/" target="_blank" rel="noopener noreferrer">ui.adsabs.harvard.edu</a></p>
-      </div>
-      <div class="container narrow page-pagination" aria-label="Contact page pagination">
-        <a class="prev" href="#cv-page">← Previous: CV</a>
-      </div>
+        <p>Education and academic experience in grouped blocks.</p>
+        <a href="cv.html">Go to CV →</a>
+      </article>
+      <article class="section-card music-card">
+        <h2>Music</h2>
+        <p>A subtle module for listening links while browsing.</p>
+        <p class="music-link">Placeholder: calm instrumental playlist</p>
+      </article>
     </section>
   </main>
 </body>
