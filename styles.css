@@ -465,11 +465,27 @@ h2 {
   gap: 0.62rem;
 }
 
-.cv-list-item p,
-.cv-proposal-list li {
+.cv-list-item p {
   margin: 0;
   font-size: 0.9rem;
   line-height: 1.55;
+}
+
+.cv-entry {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  column-gap: 1.35rem;
+  align-items: start;
+}
+
+.cv-date {
+  text-align: right;
+  white-space: nowrap;
+  padding-top: 0.02rem;
+}
+
+.cv-entry-content {
+  min-width: 0;
 }
 
 .cv-detail {
@@ -479,30 +495,7 @@ h2 {
 }
 
 .cv-proposal-list {
-  margin-left: 0;
-  padding-left: 1.15rem;
-}
-
-.cv-proposal-list li + li {
-  margin-top: 0.4rem;
-}
-
-.cv-timeline {
-  margin-top: 0.85rem;
-  row-gap: 0.8rem;
-}
-
-.cv-timeline .timeline-card {
-  padding: 0.72rem 0.9rem;
-}
-
-.cv-timeline .timeline-year {
-  font-size: 0.9rem;
-}
-
-.cv-timeline .timeline-card p {
-  font-size: 0.88rem;
-  line-height: 1.5;
+  margin-top: 0.7rem;
 }
 
 .event-type {
@@ -578,6 +571,15 @@ h2 {
 
   .cv-detail {
     margin-left: 0.7rem !important;
+  }
+
+  .cv-entry {
+    grid-template-columns: 1fr;
+    row-gap: 0.15rem;
+  }
+
+  .cv-date {
+    text-align: left;
   }
 }
 
