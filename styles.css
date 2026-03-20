@@ -434,8 +434,8 @@ h2 {
 
 .publications-shell .timeline p,
 .publications-shell .timeline .meta,
-.cv-grid p,
-.cv-grid .meta {
+.cv-stack p,
+.cv-stack .meta {
   font-size: 0.92rem;
 }
 
@@ -443,11 +443,11 @@ h2 {
   padding: 0.15rem 0 0;
 }
 
-.cv-grid {
+.cv-stack {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 1rem;
-  margin-top: 1.2rem;
+  margin-top: 0.2rem;
 }
 
 .cv-block {
@@ -455,6 +455,34 @@ h2 {
   border-radius: 12px;
   padding: 1rem;
   background: #fff;
+}
+
+.cv-section-education {
+  border-left: 4px solid color-mix(in srgb, var(--accent) 80%, #c8d7f8);
+}
+
+.cv-section-proposals {
+  border-left: 4px solid color-mix(in srgb, var(--accent-mint) 78%, #bfe8df);
+}
+
+.cv-section-activities {
+  border-left: 4px solid color-mix(in srgb, var(--accent-coral) 75%, #f3c9d1);
+}
+
+.cv-section-teaching {
+  border-left: 4px solid color-mix(in srgb, var(--accent-amber) 75%, #eddab3);
+}
+
+.event-type {
+  font-weight: 700;
+}
+
+.event-poster {
+  color: var(--accent-mint);
+}
+
+.event-talk {
+  color: var(--accent-coral);
 }
 
 .contact-list p {
@@ -480,8 +508,7 @@ h2 {
 
 @media (max-width: 980px) {
   .home-intro,
-  .interests-grid,
-  .cv-grid {
+  .interests-grid {
     grid-template-columns: 1fr;
   }
 
