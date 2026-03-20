@@ -16,7 +16,6 @@
       <a class="site-title" href="index.html">Sijia Cai</a>
       <nav class="site-nav" aria-label="Main navigation">
         <a class="active" href="index.html">Home</a>
-        <a href="about.html">About</a>
         <a href="publications.html">Publications</a>
         <a href="cv.html">CV</a>
         <a href="contact.html">Contact</a>
@@ -25,40 +24,69 @@
   </header>
 
   <main class="container page-shell">
-    <section class="hero-card">
-      <p class="eyebrow">Academic Website</p>
-      <h1>Sijia Cai</h1>
-      <p class="lead">
-        Ph.D. student in astronomy. This site is organized into clean, separate pages so each
-        section feels focused and easy to explore.
-      </p>
-      <div class="cta-row">
-        <a class="button" href="about.html">Enter Website</a>
-        <a class="button button-soft" href="publications.html">View Timeline</a>
-      </div>
+    <section class="home-intro" aria-label="Introduction">
+      <aside class="profile-card">
+        <img
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23e9f0ff'/%3E%3Cstop offset='100%25' stop-color='%23dbe7ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g)'/%3E%3Ccircle cx='400' cy='300' r='120' fill='%23b8c8f3'/%3E%3Cpath d='M180 640c25-125 130-195 220-195s195 70 220 195' fill='%23b8c8f3'/%3E%3C/svg%3E"
+          alt="Profile photo placeholder"
+          class="profile-image"
+        />
+        <h1 class="profile-name">Sijia Cai</h1>
+        <p class="profile-chinese">蔡思嘉</p>
+        <p class="profile-role">Astrophysics Ph.D. Student</p>
+        <p class="profile-focus">High-z galaxies; metal-poor/Pop III galaxies</p>
+
+        <div class="mini-links" aria-label="Quick links">
+          <a href="mailto:yourname@mail.tsinghua.edu.cn" aria-label="Email" title="Email">✉</a>
+          <a href="https://www.tsinghua.edu.cn/en/" target="_blank" rel="noopener noreferrer" aria-label="Tsinghua University" title="Tsinghua University">🏛</a>
+          <a href="https://astro.tsinghua.edu.cn/" target="_blank" rel="noopener noreferrer" aria-label="Department of Astronomy" title="Department of Astronomy">✦</a>
+        </div>
+      </aside>
+
+      <section class="intro-card">
+        <p class="eyebrow">About</p>
+        <h2 class="intro-title">Hi, I'm Sijia Cai</h2>
+        <p class="lead">
+          I am a Ph.D. student at Department of Astronomy, Tsinghua University, working with Zheng
+          Cai. I study high-redshift galaxies through multi-wavelength observations, with emphasis
+          on galaxy formation, evolution, and the early universe.
+        </p>
+      </section>
     </section>
 
-    <section class="card-grid" aria-label="Site sections overview">
-      <article class="section-card">
-        <h2>About</h2>
-        <p>Research profile, interests, and background.</p>
-        <a href="about.html">Go to About →</a>
-      </article>
-      <article class="section-card">
-        <h2>Publications</h2>
-        <p>Chronological publication timeline with visual anchors.</p>
-        <a href="publications.html">Go to Publications →</a>
-      </article>
-      <article class="section-card">
-        <h2>CV</h2>
-        <p>Education and academic experience in grouped blocks.</p>
-        <a href="cv.html">Go to CV →</a>
-      </article>
-      <article class="section-card music-card">
-        <h2>Music</h2>
-        <p>A subtle module for listening links while browsing.</p>
-        <p class="music-link">Placeholder: calm instrumental playlist</p>
-      </article>
+    <section class="content-card interests-shell" aria-labelledby="research-interests">
+      <p class="eyebrow">Research</p>
+      <h2 id="research-interests">Research Interests</h2>
+      <p class="section-note">Image and text content can be replaced with your final material later.</p>
+
+      <div class="interests-grid">
+        <article class="interest-card">
+          <img
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='700'%3E%3Crect width='100%25' height='100%25' fill='%23edf2ff'/%3E%3Ccircle cx='260' cy='240' r='120' fill='%23c3d3f8'/%3E%3Ccircle cx='600' cy='370' r='170' fill='%23b7caf5'/%3E%3Ccircle cx='920' cy='250' r='130' fill='%23d7e3ff'/%3E%3C/svg%3E"
+            alt="High-redshift galaxies placeholder"
+          />
+          <h3>High-Redshift Galaxies</h3>
+          <p>Exploring galaxy assembly and physical properties in the early universe through deep observations and spectral diagnostics.</p>
+        </article>
+
+        <article class="interest-card">
+          <img
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='700'%3E%3Crect width='100%25' height='100%25' fill='%23f2f6ff'/%3E%3Cpath d='M120 550C280 420 440 580 600 440s320-10 480-120v230H120z' fill='%23c8d8fa'/%3E%3Cpath d='M120 610C300 500 470 640 640 510s280 40 440-40v140H120z' fill='%23b4c8f5'/%3E%3C/svg%3E"
+            alt="Multi-wavelength observations placeholder"
+          />
+          <h3>Multi-Wavelength Observations</h3>
+          <p>Combining optical, infrared, and radio data to uncover how gas, stars, and dust evolve in distant galaxies.</p>
+        </article>
+
+        <article class="interest-card">
+          <img
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='700'%3E%3Crect width='100%25' height='100%25' fill='%23eef3ff'/%3E%3Crect x='180' y='110' width='840' height='480' rx='24' fill='%23ceddfa'/%3E%3Crect x='250' y='180' width='700' height='70' rx='12' fill='%23b8cbf5'/%3E%3Crect x='250' y='290' width='500' height='70' rx='12' fill='%23b8cbf5'/%3E%3Crect x='250' y='400' width='620' height='70' rx='12' fill='%23b8cbf5'/%3E%3C/svg%3E"
+            alt="Metal-poor and Pop III galaxies placeholder"
+          />
+          <h3>Metal-Poor / Pop III Systems</h3>
+          <p>Investigating candidate primordial populations to constrain chemical enrichment and star-formation processes at cosmic dawn.</p>
+        </article>
+      </div>
     </section>
   </main>
 </body>
