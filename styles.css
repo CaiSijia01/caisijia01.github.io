@@ -400,11 +400,47 @@ h2 {
   font-size: 1.1rem;
 }
 
+
+.section-main-title {
+  font-size: clamp(1.72rem, 2.5vw, 2.2rem);
+  color: #18335f;
+}
+
+.meta-link {
+  margin-left: 0.5rem;
+  white-space: nowrap;
+}
+
+.pub-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(140px, 3fr);
+  gap: 0.9rem;
+  align-items: start;
+}
+
+.pub-summary-text {
+  margin: 0;
+}
+
+.pub-summary-image {
+  width: 100%;
+  max-width: 190px;
+  justify-self: end;
+  border-radius: 10px;
+  border: 1px solid #d9e2f5;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
 .publications-shell .timeline p,
 .publications-shell .timeline .meta,
 .cv-grid p,
 .cv-grid .meta {
   font-size: 0.92rem;
+}
+
+.cv-shell {
+  padding: 0.15rem 0 0;
 }
 
 .cv-grid {
@@ -479,6 +515,16 @@ h2 {
   .timeline-year {
     justify-content: flex-start;
     margin-top: 0.5rem;
+  }
+
+  .pub-summary {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+
+  .pub-summary-image {
+    justify-self: start;
+    max-width: min(100%, 230px);
   }
 }
 
