@@ -88,13 +88,6 @@ a {
   box-shadow: 0 10px 28px rgba(15, 23, 42, 0.04);
 }
 
-.home-intro {
-  display: grid;
-  grid-template-columns: 300px minmax(0, 1fr);
-  gap: 1.6rem;
-  align-items: start;
-}
-
 .eyebrow {
   margin: 0;
   text-transform: uppercase;
@@ -104,8 +97,7 @@ a {
 }
 
 h1,
-h2,
-h3 {
+h2 {
   line-height: 1.25;
 }
 
@@ -117,11 +109,6 @@ h1 {
 h2 {
   margin: 0 0 0.35rem;
   font-size: 1.2rem;
-}
-
-h3 {
-  margin: 0 0 0.35rem;
-  font-size: 1.02rem;
 }
 
 .lead,
@@ -170,6 +157,7 @@ h3 {
 .section-card p {
   margin-top: 0;
   color: var(--muted);
+  font-size: 0.96rem;
 }
 
 .music-card,
@@ -179,101 +167,6 @@ h3 {
 
 .music-link {
   color: #64748b;
-  font-size: 0.95rem;
-}
-
-.home-profile {
-  max-width: 250px;
-}
-
-.profile-column p {
-  margin: 0;
-}
-
-.profile-name {
-  font-size: clamp(1.8rem, 2.7vw, 2.3rem);
-  margin: 0.9rem 0 0.15rem;
-}
-
-.profile-name-cn {
-  font-size: 1.1rem;
-  color: var(--text);
-  margin-bottom: 0.35rem;
-}
-
-.profile-role {
-  color: var(--muted);
-  font-size: 0.96rem;
-}
-
-.profile-focus {
-  color: #64748b;
-  font-size: 0.84rem;
-  margin-top: 0.25rem !important;
-}
-
-.icon-row {
-  display: flex;
-  gap: 0.6rem;
-  margin-top: 0.8rem;
-}
-
-.icon-link {
-  width: 2rem;
-  height: 2rem;
-  display: grid;
-  place-items: center;
-  border-radius: 999px;
-  text-decoration: none;
-  background: var(--accent-soft);
-  color: var(--accent);
-  border: 1px solid #d1def9;
-}
-
-.intro-title {
-  margin-top: 0.3rem;
-  font-size: clamp(2rem, 3vw, 2.5rem);
-}
-
-.interests-section {
-  margin-top: 1.15rem;
-}
-
-.interest-grid {
-  margin-top: 1rem;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.interest-card {
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  overflow: hidden;
-  background: #fff;
-}
-
-.interest-image {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  display: block;
-}
-
-.interest-card h3,
-.interest-card p {
-  padding-left: 0.85rem;
-  padding-right: 0.85rem;
-}
-
-.interest-card h3 {
-  margin-top: 0.85rem;
-}
-
-.interest-card p {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  color: var(--muted);
   font-size: 0.95rem;
 }
 
@@ -382,16 +275,11 @@ h3 {
 
 @media (max-width: 860px) {
   .card-grid,
-  .cv-grid,
-  .interest-grid {
+  .cv-grid {
     grid-template-columns: 1fr;
   }
 
   .about-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .home-intro {
     grid-template-columns: 1fr;
   }
 
