@@ -388,12 +388,6 @@ h2 {
   padding: 0.9rem 1rem 0.95rem;
 }
 
-.timeline-card p.advisor {
-  margin-left: 20px;   
-  font-style: italic;  
-  color: #333;         
-}
-
 .meta {
   margin: 0 0 0.4rem;
   color: var(--muted);
@@ -419,25 +413,8 @@ h2 {
   white-space: nowrap;
 }
 
-.pub-summary {
-  display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(140px, 3fr);
-  gap: 0.9rem;
-  align-items: start;
-}
-
 .pub-summary-text {
   margin: 0;
-}
-
-.pub-summary-image {
-  width: 100%;
-  max-width: 190px;
-  justify-self: end;
-  border-radius: 10px;
-  border: 1px solid #d9e2f5;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
 }
 
 .publications-shell .timeline p,
@@ -480,6 +457,34 @@ h2 {
 
 .cv-block p {
   margin: 0.22rem 0;
+}
+
+.cv-list {
+  margin-top: 0.7rem;
+  display: grid;
+  gap: 0.62rem;
+}
+
+.cv-list-item p,
+.cv-proposal-list li {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.cv-detail {
+  margin-left: 1.2rem !important;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.cv-proposal-list {
+  margin-left: 0;
+  padding-left: 1.15rem;
+}
+
+.cv-proposal-list li + li {
+  margin-top: 0.4rem;
 }
 
 .cv-timeline {
@@ -571,14 +576,8 @@ h2 {
     margin-top: 0.5rem;
   }
 
-  .pub-summary {
-    grid-template-columns: 1fr;
-    gap: 0.7rem;
-  }
-
-  .pub-summary-image {
-    justify-self: start;
-    max-width: min(100%, 230px);
+  .cv-detail {
+    margin-left: 0.7rem !important;
   }
 }
 
