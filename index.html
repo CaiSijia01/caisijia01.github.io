@@ -1,10 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Sijia Cai</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sijia Cai | Astronomy PhD Student</title>
+  <meta
+    name="description"
+    content="Personal academic website of Sijia Cai, an astronomy PhD student researching galaxies, star formation, and cosmic structure."
+  />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <h1>Hello, I'm Sijia.</h1>
-    <p>This is my academic homepage.</p>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="site-title" href="#top">Sijia Cai</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#publications">Publications</a>
+        <a href="#cv">CV</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Astronomy PhD Student</p>
+          <h1>Exploring galaxies across cosmic time.</h1>
+          <p class="intro">
+            I study how galaxies form and evolve by combining large survey data,
+            multi-wavelength observations, and statistical modeling.
+          </p>
+        </div>
+        <div class="profile-photo" role="img" aria-label="Portrait placeholder for Sijia Cai">
+          <span>Add<br />Photo</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <h2>About</h2>
+        <p>
+          I am <strong>Sijia Cai</strong>, a PhD student in astronomy interested in
+          galaxy evolution, star formation histories, and the baryon cycle in the
+          nearby and distant universe. My current work focuses on connecting
+          resolved galaxy structure with global evolutionary trends.
+        </p>
+        <p>
+          <strong>Research interests:</strong> galaxy evolution · stellar populations
+          · infrared and optical surveys · statistical inference · observational
+          cosmology.
+        </p>
+      </div>
+    </section>
+
+    <section id="publications" class="section">
+      <div class="container">
+        <h2>Selected Publications</h2>
+        <ol class="publication-list">
+          <li>
+            <article>
+              <h3>
+                Mapping Dust-Obscured Star Formation in Intermediate-Redshift Disk Galaxies
+              </h3>
+              <p class="meta">Cai, S. et al. (2025), <em>Astrophysical Journal</em></p>
+              <p>
+                We combine UV-to-infrared imaging to quantify radial star formation
+                profiles and show how dust correction impacts inferred inside-out
+                growth signatures.
+              </p>
+              <a href="https://ui.adsabs.harvard.edu/" target="_blank" rel="noopener noreferrer">View on NASA/ADS</a>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h3>
+                Environmental Quenching Timescales from Group Galaxy Spectral Indices
+              </h3>
+              <p class="meta">Cai, S.; Collaborators (2024), <em>Monthly Notices of the RAS</em></p>
+              <p>
+                Using spectral diagnostics in nearby groups, we constrain delayed-then-rapid
+                quenching channels and compare inferred timescales with simulations.
+              </p>
+              <a href="https://ui.adsabs.harvard.edu/" target="_blank" rel="noopener noreferrer">View on NASA/ADS</a>
+            </article>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="cv" class="section">
+      <div class="container">
+        <h2>CV Highlights</h2>
+        <div class="timeline" aria-label="Academic timeline">
+          <article class="timeline-item">
+            <h3>Education</h3>
+            <p class="meta">2022–Present</p>
+            <p>PhD in Astronomy, [Your University], focusing on galaxy evolution.</p>
+          </article>
+
+          <article class="timeline-item">
+            <h3>Proposals</h3>
+            <p class="meta">2024–2026</p>
+            <p>
+              Co-PI and contributor on observing proposals for space-based and
+              ground-based facilities.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <h3>Conference Participation</h3>
+            <p class="meta">2023–2026</p>
+            <p>
+              Oral and poster presentations at AAS meetings and galaxy evolution workshops.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <h3>Teaching Assistant Experience</h3>
+            <p class="meta">2022–2025</p>
+            <p>
+              TA for introductory astronomy and observational methods; led labs,
+              office hours, and data analysis tutorials.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:sijia@example.edu">sijia@example.edu</a></p>
+        <p>NASA/ADS Author Profile: <a href="https://ui.adsabs.harvard.edu/" target="_blank" rel="noopener noreferrer">ui.adsabs.harvard.edu</a></p>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
