@@ -361,9 +361,21 @@ h2 {
 }
 
 .timeline-year {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
   font-weight: 650;
   color: var(--accent);
-  padding-top: 0.3rem;
+  line-height: 1;
+}
+
+.timeline-year::after {
+  content: "";
+  width: 0.62rem;
+  height: 0.62rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent-coral) 70%, #7c9ce0);
 }
 
 .timeline-card {
@@ -374,19 +386,25 @@ h2 {
   padding: 0.9rem 1rem 0.95rem;
 }
 
-.timeline-icon {
-  position: absolute;
-  left: -1.55rem;
-  top: 1.05rem;
-  margin: 0;
-  color: color-mix(in srgb, var(--accent-coral) 70%, #7c9ce0);
-  font-size: 1rem;
-}
-
 .meta {
   margin: 0 0 0.4rem;
   color: var(--muted);
   font-size: 0.95rem;
+}
+
+.publications-shell h1 {
+  margin-bottom: 0.5rem;
+}
+
+.publications-shell .timeline h2 {
+  font-size: 1.1rem;
+}
+
+.publications-shell .timeline p,
+.publications-shell .timeline .meta,
+.cv-grid p,
+.cv-grid .meta {
+  font-size: 0.92rem;
 }
 
 .cv-grid {
@@ -454,12 +472,12 @@ h2 {
   }
 
   .timeline::before,
-  .timeline-icon {
+  .timeline-year::after {
     display: none;
   }
 
   .timeline-year {
-    padding-top: 0;
+    justify-content: flex-start;
     margin-top: 0.5rem;
   }
 }
