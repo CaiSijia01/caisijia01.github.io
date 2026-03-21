@@ -209,7 +209,19 @@ h2 {
 }
 
 .effect-music-hover {
-  animation: orchestraDrift 4.2s ease-in-out infinite;
+  animation: gentleFade 3.8s ease-in-out infinite;
+}
+
+.effect-music-hover-fixed {
+  left: 50%;
+  top: 22%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  letter-spacing: 0.15rem;
+  white-space: nowrap;
+  opacity: 0;
+  text-shadow: 0 1px 6px rgba(15, 23, 42, 0.15);
+  animation: gentleFade 3.8s ease-in-out infinite;
 }
 
 .profile-name {
@@ -693,31 +705,15 @@ h2 {
   }
 }
 
-@keyframes orchestraDrift {
+@keyframes gentleFade {
   0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) rotate(-5deg) scale(var(--emoji-scale, 1));
+    opacity: 0.08;
   }
-  25% {
-    opacity: 0.62;
-    transform: translate(
-      calc(-50% + calc(var(--drift-x, 0px) * 0.45)),
-      calc(-50% + calc(var(--drift-y, 0px) * 0.45))
-    ) rotate(2deg) scale(calc(var(--emoji-scale, 1) * 1.02));
-  }
-  72% {
+  50% {
     opacity: 0.72;
-    transform: translate(
-      calc(-50% + var(--drift-x, 0px)),
-      calc(-50% - var(--emoji-lift, 24px))
-    ) rotate(-1deg) scale(calc(var(--emoji-scale, 1) * 1.04));
   }
   100% {
-    opacity: 0;
-    transform: translate(
-      calc(-50% + calc(var(--drift-x, 0px) * 0.35)),
-      calc(-50% - calc(var(--emoji-lift, 24px) * 0.82))
-    ) rotate(4deg) scale(var(--emoji-scale, 1));
+    opacity: 0.08;
   }
 }
 

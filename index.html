@@ -127,12 +127,7 @@
       const effectMap = {
         nature: { emojis: ["🌸"], count: 6, className: "effect-nature" },
         basketball: { emojis: ["🏀"], count: 5, className: "effect-basketball" },
-        music: { emojis: ["🎵"], count: 5, className: "effect-music" },
-        musicHover: {
-          emojis: ["🎷", "🎻", "🥁", "🎸", "🪉", "🎶", "🎧"],
-          countRange: [5, 7],
-          className: "effect-music-hover"
-        }
+        music: { emojis: ["🎵"], count: 5, className: "effect-music" }
       };
 
       const clearEffects = () => {
@@ -146,6 +141,15 @@
       };
 
       const spawnEffect = (type) => {
+        if (type === "musicHover") {
+          layer.innerHTML = "";
+          const fixedEmoji = document.createElement("span");
+          fixedEmoji.className = "effect-emoji effect-music-hover-fixed";
+          fixedEmoji.textContent = "🎷🎻🥁🎸🪉🎶🎧";
+          layer.appendChild(fixedEmoji);
+          return;
+        }
+
         const effect = effectMap[type];
         if (!effect) return;
 
@@ -220,10 +224,16 @@
           playAudio();
         };
 
+        const stopMusicHover = () => {
+          if (clearTimer) window.clearTimeout(clearTimer);
+          clearEffects();
+          stopAudio();
+        };
+
         musicTrigger.addEventListener("mouseenter", startMusicHover);
-        musicTrigger.addEventListener("mouseleave", queueClear);
+        musicTrigger.addEventListener("mouseleave", stopMusicHover);
         musicTrigger.addEventListener("focus", startMusicHover);
-        musicTrigger.addEventListener("blur", queueClear);
+        musicTrigger.addEventListener("blur", stopMusicHover);
       }
     })();
   </script>
