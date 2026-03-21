@@ -9,6 +9,7 @@
   --accent-coral: #d97786;
   --accent-mint: #2f8f83;
   --accent-amber: #c79a3b;
+  --accent-purple: #8b5cf6;
   --max-width: 1080px;
   --radius: 16px;
 }
@@ -239,8 +240,14 @@ h2 {
 
 .mini-links a:nth-child(3):hover,
 .mini-links a:nth-child(3):focus-visible,
+.mini-links a:nth-child(3):active {
+  border-color: color-mix(in srgb, var(--accent-purple) 45%, white);
+  background: color-mix(in srgb, var(--accent-purple) 14%, white);
+}
+
 .mini-links a:nth-child(4):hover,
-.mini-links a:nth-child(4):focus-visible {
+.mini-links a:nth-child(4):focus-visible,
+.mini-links a:nth-child(4):active {
   border-color: color-mix(in srgb, var(--accent-amber) 45%, white);
   background: color-mix(in srgb, var(--accent-amber) 14%, white);
 }
@@ -512,6 +519,7 @@ h2 {
 
 .contact-list p {
   margin: 0.35rem 0;
+  font-size: 0.92rem;
 }
 
 .page-pagination {
