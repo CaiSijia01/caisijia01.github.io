@@ -125,9 +125,14 @@
       let clearTimer = null;
 
       const effectMap = {
-        nature: { emoji: "🌸", count: 6, className: "effect-nature" },
-        basketball: { emoji: "🏀", count: 5, className: "effect-basketball" },
-        music: { emoji: "🎵", count: 5, className: "effect-music" }
+        nature: { emojis: ["🌸"], count: 6, className: "effect-nature" },
+        basketball: { emojis: ["🏀"], count: 5, className: "effect-basketball" },
+        music: { emojis: ["🎵"], count: 5, className: "effect-music" },
+        musicHover: {
+          emojis: ["🎷", "🎻", "🥁", "🎸", "🪉", "🎶", "🎧"],
+          countRange: [5, 7],
+          className: "effect-music-hover"
+        }
       };
 
       const clearEffects = () => {
@@ -147,21 +152,32 @@
         layer.innerHTML = "";
         const bounds = profileWrap.getBoundingClientRect();
 
-        for (let i = 0; i < effect.count; i += 1) {
+        const [minCount, maxCount] = effect.countRange || [effect.count, effect.count];
+        const spawnCount = Math.floor(Math.random() * (maxCount - minCount + 1)) + minCount;
+
+        for (let i = 0; i < spawnCount; i += 1) {
           const el = document.createElement("span");
           const x = Math.random() * bounds.width * 0.88 + bounds.width * 0.06;
           const y = Math.random() * bounds.height * 0.82 + bounds.height * 0.08;
           const delay = (Math.random() * 0.65).toFixed(2);
           const duration = (2.8 + Math.random() * 2.4).toFixed(2);
           const scale = (0.85 + Math.random() * 0.4).toFixed(2);
+          const driftX = `${(Math.random() * 16 - 8).toFixed(1)}px`;
+          const driftY = `${(Math.random() * 14 - 7).toFixed(1)}px`;
+          const lift = `${(20 + Math.random() * 15).toFixed(1)}px`;
+          const emoji =
+            effect.emojis[Math.floor(Math.random() * effect.emojis.length)] || "✨";
 
           el.className = `effect-emoji ${effect.className}`;
-          el.textContent = effect.emoji;
+          el.textContent = emoji;
           el.style.left = `${x}px`;
           el.style.top = `${y}px`;
           el.style.animationDelay = `${delay}s`;
           el.style.animationDuration = `${duration}s`;
           el.style.setProperty("--emoji-scale", scale);
+          el.style.setProperty("--drift-x", driftX);
+          el.style.setProperty("--drift-y", driftY);
+          el.style.setProperty("--emoji-lift", lift);
           layer.appendChild(el);
         }
       };
@@ -198,10 +214,16 @@
           }
         };
 
-        musicTrigger.addEventListener("mouseenter", playAudio);
-        musicTrigger.addEventListener("mouseleave", stopAudio);
-        musicTrigger.addEventListener("focus", playAudio);
-        musicTrigger.addEventListener("blur", stopAudio);
+        const startMusicHover = () => {
+          cancelClear();
+          spawnEffect("musicHover");
+          playAudio();
+        };
+
+        musicTrigger.addEventListener("mouseenter", startMusicHover);
+        musicTrigger.addEventListener("mouseleave", queueClear);
+        musicTrigger.addEventListener("focus", startMusicHover);
+        musicTrigger.addEventListener("blur", queueClear);
       }
     })();
   </script>

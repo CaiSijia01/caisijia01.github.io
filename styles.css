@@ -208,6 +208,10 @@ h2 {
   animation: noteSway 2.9s ease-in-out infinite;
 }
 
+.effect-music-hover {
+  animation: orchestraDrift 4.2s ease-in-out infinite;
+}
+
 .profile-name {
   margin: 0;
   font-size: clamp(1.7rem, 2vw, 2.1rem);
@@ -686,6 +690,34 @@ h2 {
   100% {
     opacity: 0;
     transform: translate(-52%, -48%) rotate(-5deg) scale(var(--emoji-scale, 1));
+  }
+}
+
+@keyframes orchestraDrift {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-5deg) scale(var(--emoji-scale, 1));
+  }
+  25% {
+    opacity: 0.62;
+    transform: translate(
+      calc(-50% + calc(var(--drift-x, 0px) * 0.45)),
+      calc(-50% + calc(var(--drift-y, 0px) * 0.45))
+    ) rotate(2deg) scale(calc(var(--emoji-scale, 1) * 1.02));
+  }
+  72% {
+    opacity: 0.72;
+    transform: translate(
+      calc(-50% + var(--drift-x, 0px)),
+      calc(-50% - var(--emoji-lift, 24px))
+    ) rotate(-1deg) scale(calc(var(--emoji-scale, 1) * 1.04));
+  }
+  100% {
+    opacity: 0;
+    transform: translate(
+      calc(-50% + calc(var(--drift-x, 0px) * 0.35)),
+      calc(-50% - calc(var(--emoji-lift, 24px) * 0.82))
+    ) rotate(4deg) scale(var(--emoji-scale, 1));
   }
 }
 
