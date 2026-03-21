@@ -208,20 +208,11 @@ h2 {
   animation: noteSway 2.9s ease-in-out infinite;
 }
 
-.effect-music-hover {
-  animation: gentleFade 3.8s ease-in-out infinite;
-}
-
-.effect-music-hover-fixed {
-  left: 50%;
-  top: 22%;
-  transform: translate(-50%, -50%);
-  font-size: clamp(1rem, 1.8vw, 1.3rem);
-  letter-spacing: 0.15rem;
-  white-space: nowrap;
-  opacity: 0;
-  text-shadow: 0 1px 6px rgba(15, 23, 42, 0.15);
-  animation: gentleFade 3.8s ease-in-out infinite;
+.effect-music-click {
+  font-size: clamp(0.95rem, 1.6vw, 1.25rem);
+  opacity: 0.12;
+  text-shadow: 0 1px 6px rgba(15, 23, 42, 0.14);
+  animation: gentleFade 2.9s ease-in-out infinite;
 }
 
 .profile-name {
@@ -371,6 +362,12 @@ h2 {
   color: #5f6f86;
   border-color: color-mix(in srgb, #5f6f86 45%, transparent);
   background: color-mix(in srgb, #5f6f86 7%, white);
+}
+
+.music-hover-hint[aria-pressed="true"] {
+  color: #4f637d;
+  border-color: color-mix(in srgb, #4f637d 50%, transparent);
+  background: color-mix(in srgb, #4f637d 10%, white);
 }
 
 .interests-shell {
