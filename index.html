@@ -122,8 +122,6 @@
 
       if (!layer || !profileWrap || !keywords.length) return;
 
-      let clearTimer = null;
-
       const effectMap = {
         nature: { emojis: ["🌸"], count: 6, className: "effect-nature" },
         basketball: { emojis: ["🏀"], count: 5, className: "effect-basketball" },
@@ -202,32 +200,16 @@
         }
       };
 
-      const queueClear = () => {
-        if (clearTimer) window.clearTimeout(clearTimer);
-        clearTimer = window.setTimeout(() => {
-          clearEffects();
-          stopAudio();
-        }, 90);
-      };
-
-      const cancelClear = () => {
-        if (clearTimer) window.clearTimeout(clearTimer);
-      };
-
-      keywords.forEach((keyword) => {
-        const effectType = keyword.dataset.effect;
-        keyword.addEventListener("mouseenter", () => {
-          cancelClear();
-          spawnEffect(effectType);
-        });
-        keyword.addEventListener("mouseleave", queueClear);
-      });
-
-      layer.addEventListener("mouseenter", cancelClear);
-      layer.addEventListener("mouseleave", queueClear);
-
       if (musicTrigger && musicAudio) {
         let isMusicPlaying = false;
+
+        const restoreIdleEffect = () => {
+          if (isMusicPlaying) {
+            spawnEffect("musicClick");
+            return;
+          }
+          clearEffects();
+        };
 
         const playAudio = () => {
           const playPromise = musicAudio.play();
@@ -241,7 +223,6 @@
         };
 
         const startMusic = () => {
-          cancelClear();
           spawnEffect("musicClick");
           playAudio();
           isMusicPlaying = true;
@@ -249,7 +230,6 @@
         };
 
         const stopMusic = () => {
-          if (clearTimer) window.clearTimeout(clearTimer);
           clearEffects();
           stopAudio();
           isMusicPlaying = false;
@@ -272,6 +252,22 @@
           }
         });
         musicAudio.addEventListener("ended", stopMusic);
+
+        keywords.forEach((keyword) => {
+          const effectType = keyword.dataset.effect;
+          keyword.addEventListener("mouseenter", () => {
+            spawnEffect(effectType);
+          });
+          keyword.addEventListener("mouseleave", restoreIdleEffect);
+        });
+      } else {
+        keywords.forEach((keyword) => {
+          const effectType = keyword.dataset.effect;
+          keyword.addEventListener("mouseenter", () => {
+            spawnEffect(effectType);
+          });
+          keyword.addEventListener("mouseleave", clearEffects);
+        });
       }
     })();
   </script>
