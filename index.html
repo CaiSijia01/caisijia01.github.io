@@ -26,11 +26,14 @@
   <main class="container page-shell">
     <section class="home-intro" aria-label="Introduction">
       <aside class="profile-card">
-        <img
-          src="img/profile.png"
-          alt="Sijia Cai"
-          class="profile-image"
-        />
+        <div class="profile-visual-wrap">
+          <img
+            src="img/profile.png"
+            alt="Sijia Cai"
+            class="profile-image"
+          />
+          <div class="emoji-effect-layer" aria-hidden="true"></div>
+        </div>
         <h1 class="profile-name">Sijia Cai</h1>
         <p class="profile-chinese">蔡思嘉</p>
         <p class="profile-role">Astrophysics Ph.D. Student</p>
@@ -57,6 +60,24 @@
           I study high-redshift galaxies through multi-wavelength observations, with emphasis
           on galaxy formation, evolution, and the early universe.
         </p>
+        <p class="personal-touch" aria-label="Personal interests">
+          In my life, I enjoy
+          <span class="hover-keyword" data-effect="nature">walking in nature</span>,
+          playing <span class="hover-keyword" data-effect="basketball">basketball</span> with friends,
+          and sometimes creating <span class="hover-keyword" data-effect="music">music</span>.
+          <span
+            class="music-hover-hint"
+            data-music-trigger
+            role="button"
+            tabindex="0"
+            aria-label="Hover here to listen"
+          >
+            Hover here and listen
+          </span>
+        </p>
+        <audio id="music-preview" preload="none">
+          <source src="audio/personal-touch.wav" type="audio/wav" />
+        </audio>
       </section>
     </section>
 
@@ -91,5 +112,98 @@
       </div>
     </section>
   </main>
+  <script>
+    (() => {
+      const layer = document.querySelector(".emoji-effect-layer");
+      const profileWrap = document.querySelector(".profile-visual-wrap");
+      const keywords = document.querySelectorAll(".hover-keyword");
+      const musicTrigger = document.querySelector("[data-music-trigger]");
+      const musicAudio = document.getElementById("music-preview");
+
+      if (!layer || !profileWrap || !keywords.length) return;
+
+      let clearTimer = null;
+
+      const effectMap = {
+        nature: { emoji: "🌸", count: 6, className: "effect-nature" },
+        basketball: { emoji: "🏀", count: 5, className: "effect-basketball" },
+        music: { emoji: "🎵", count: 5, className: "effect-music" }
+      };
+
+      const clearEffects = () => {
+        layer.innerHTML = "";
+      };
+
+      const stopAudio = () => {
+        if (!musicAudio) return;
+        musicAudio.pause();
+        musicAudio.currentTime = 0;
+      };
+
+      const spawnEffect = (type) => {
+        const effect = effectMap[type];
+        if (!effect) return;
+
+        layer.innerHTML = "";
+        const bounds = profileWrap.getBoundingClientRect();
+
+        for (let i = 0; i < effect.count; i += 1) {
+          const el = document.createElement("span");
+          const x = Math.random() * bounds.width * 0.88 + bounds.width * 0.06;
+          const y = Math.random() * bounds.height * 0.82 + bounds.height * 0.08;
+          const delay = (Math.random() * 0.65).toFixed(2);
+          const duration = (2.8 + Math.random() * 2.4).toFixed(2);
+          const scale = (0.85 + Math.random() * 0.4).toFixed(2);
+
+          el.className = `effect-emoji ${effect.className}`;
+          el.textContent = effect.emoji;
+          el.style.left = `${x}px`;
+          el.style.top = `${y}px`;
+          el.style.animationDelay = `${delay}s`;
+          el.style.animationDuration = `${duration}s`;
+          el.style.setProperty("--emoji-scale", scale);
+          layer.appendChild(el);
+        }
+      };
+
+      const queueClear = () => {
+        if (clearTimer) window.clearTimeout(clearTimer);
+        clearTimer = window.setTimeout(() => {
+          clearEffects();
+          stopAudio();
+        }, 90);
+      };
+
+      const cancelClear = () => {
+        if (clearTimer) window.clearTimeout(clearTimer);
+      };
+
+      keywords.forEach((keyword) => {
+        const effectType = keyword.dataset.effect;
+        keyword.addEventListener("mouseenter", () => {
+          cancelClear();
+          spawnEffect(effectType);
+        });
+        keyword.addEventListener("mouseleave", queueClear);
+      });
+
+      layer.addEventListener("mouseenter", cancelClear);
+      layer.addEventListener("mouseleave", queueClear);
+
+      if (musicTrigger && musicAudio) {
+        const playAudio = () => {
+          const playPromise = musicAudio.play();
+          if (playPromise && typeof playPromise.catch === "function") {
+            playPromise.catch(() => {});
+          }
+        };
+
+        musicTrigger.addEventListener("mouseenter", playAudio);
+        musicTrigger.addEventListener("mouseleave", stopAudio);
+        musicTrigger.addEventListener("focus", playAudio);
+        musicTrigger.addEventListener("blur", stopAudio);
+      }
+    })();
+  </script>
 </body>
 </html>
