@@ -70,9 +70,9 @@
             data-music-trigger
             role="button"
             tabindex="0"
-            aria-label="Hover here to listen"
+            aria-label="Click to start or stop my music"
           >
-            Hover here and listen
+            Click to start/stop my music
           </span>
         </p>
         <audio id="music-preview" preload="none">
@@ -141,12 +141,28 @@
       };
 
       const spawnEffect = (type) => {
-        if (type === "musicHover") {
+        if (type === "musicClick") {
           layer.innerHTML = "";
-          const fixedEmoji = document.createElement("span");
-          fixedEmoji.className = "effect-emoji effect-music-hover-fixed";
-          fixedEmoji.textContent = "🎷🎻🥁🎸🪉🎶🎧";
-          layer.appendChild(fixedEmoji);
+          const clickEmojis = ["🎷", "🎻", "🥁", "🎸", "🪉", "🎶", "🎧"];
+          const positions = [
+            { left: "18%", top: "18%" },
+            { left: "50%", top: "12%" },
+            { left: "82%", top: "18%" },
+            { left: "16%", top: "50%" },
+            { left: "84%", top: "50%" },
+            { left: "30%", top: "82%" },
+            { left: "70%", top: "82%" }
+          ];
+
+          clickEmojis.forEach((emoji, index) => {
+            const fixedEmoji = document.createElement("span");
+            fixedEmoji.className = "effect-emoji effect-music-click";
+            fixedEmoji.textContent = emoji;
+            fixedEmoji.style.left = positions[index].left;
+            fixedEmoji.style.top = positions[index].top;
+            fixedEmoji.style.animationDelay = `${(index * 0.2).toFixed(1)}s`;
+            layer.appendChild(fixedEmoji);
+          });
           return;
         }
 
@@ -211,29 +227,51 @@
       layer.addEventListener("mouseleave", queueClear);
 
       if (musicTrigger && musicAudio) {
+        let isMusicPlaying = false;
+
         const playAudio = () => {
           const playPromise = musicAudio.play();
           if (playPromise && typeof playPromise.catch === "function") {
-            playPromise.catch(() => {});
+            playPromise.catch(() => {
+              isMusicPlaying = false;
+              clearEffects();
+              musicTrigger.setAttribute("aria-pressed", "false");
+            });
           }
         };
 
-        const startMusicHover = () => {
+        const startMusic = () => {
           cancelClear();
-          spawnEffect("musicHover");
+          spawnEffect("musicClick");
           playAudio();
+          isMusicPlaying = true;
+          musicTrigger.setAttribute("aria-pressed", "true");
         };
 
-        const stopMusicHover = () => {
+        const stopMusic = () => {
           if (clearTimer) window.clearTimeout(clearTimer);
           clearEffects();
           stopAudio();
+          isMusicPlaying = false;
+          musicTrigger.setAttribute("aria-pressed", "false");
         };
 
-        musicTrigger.addEventListener("mouseenter", startMusicHover);
-        musicTrigger.addEventListener("mouseleave", stopMusicHover);
-        musicTrigger.addEventListener("focus", startMusicHover);
-        musicTrigger.addEventListener("blur", stopMusicHover);
+        const toggleMusic = () => {
+          if (isMusicPlaying) {
+            stopMusic();
+            return;
+          }
+          startMusic();
+        };
+
+        musicTrigger.addEventListener("click", toggleMusic);
+        musicTrigger.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            toggleMusic();
+          }
+        });
+        musicAudio.addEventListener("ended", stopMusic);
       }
     })();
   </script>
