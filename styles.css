@@ -221,6 +221,11 @@ h2 {
   transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
+.email-icon {
+  color: var(--muted);
+  line-height: 1;
+}
+
 .mini-links a:hover,
 .mini-links a:focus-visible {
   transform: translateY(-1px);
@@ -230,6 +235,15 @@ h2 {
 .mini-links a:nth-child(1):focus-visible {
   border-color: color-mix(in srgb, var(--accent-coral) 45%, white);
   background: color-mix(in srgb, var(--accent-coral) 12%, white);
+}
+
+.mini-links a:nth-child(1):active {
+  border-color: color-mix(in srgb, var(--accent) 45%, white);
+  background: color-mix(in srgb, var(--accent) 14%, white);
+}
+
+.mini-links a:nth-child(1):active .email-icon {
+  color: var(--accent);
 }
 
 .mini-links a:nth-child(2):hover,
@@ -267,6 +281,11 @@ h2 {
 
 .interests-shell {
   margin-top: 1rem;
+}
+
+#research-interests {
+  color: #18335f;
+  font-size: 1.34rem;
 }
 
 .interests-grid {
