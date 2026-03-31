@@ -344,14 +344,33 @@ h2 {
   border-bottom-color: color-mix(in srgb, #415977 55%, transparent);
 }
 
+.music-hint-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-left: 0.4rem;
+}
+
+.music-hint-text {
+  font-size: 0.76rem;
+  color: #8a96a8;
+  white-space: nowrap;
+}
+
 .music-hover-hint {
   display: inline-flex;
-  margin-left: 0.4rem;
+  margin-left: 0;
+  align-items: center;
+  justify-content: center;
+  width: 1.85rem;
+  height: 1.85rem;
   font-size: 0.76rem;
+  font-family: inherit;
   color: #8a96a8;
   border: 1px solid color-mix(in srgb, #8a96a8 35%, transparent);
   border-radius: 999px;
-  padding: 0.1rem 0.46rem;
+  padding: 0;
+  background: transparent;
   cursor: pointer;
   white-space: nowrap;
   transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;

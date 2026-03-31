@@ -65,18 +65,35 @@
           <span class="hover-keyword" data-effect="nature">walking in nature</span>,
           playing <span class="hover-keyword" data-effect="basketball">basketball</span>,
           and sometimes creating <span class="hover-keyword" data-effect="music">music</span>.
-          <span
-            class="music-hover-hint"
-            data-music-trigger
-            role="button"
-            tabindex="0"
-            aria-label="Click to start or stop my music"
-          >
-            Click to start/stop my music
+          <span class="music-hint-group" aria-label="Music controls">
+            <span class="music-hint-text">提示：旁边按钮可开始/结束不同音乐。</span>
+            <button
+              type="button"
+              class="music-hover-hint"
+              data-music-trigger
+              data-audio-target="music-preview-cyclic"
+              aria-label="Toggle Cyclic Law music preview"
+              aria-pressed="false"
+            >
+              ⚙︎
+            </button>
+            <button
+              type="button"
+              class="music-hover-hint"
+              data-music-trigger
+              data-audio-target="music-preview-stars"
+              aria-label="Toggle Where Stars Bloom music preview"
+              aria-pressed="false"
+            >
+              ✩
+            </button>
           </span>
         </p>
-        <audio id="music-preview" preload="none">
+        <audio id="music-preview-cyclic" preload="none">
           <source src="/audio/Cyclic_Law_260321.wav" type="audio/wav" />
+        </audio>
+        <audio id="music-preview-stars" preload="none">
+          <source src="/audio/WhereStarsBloom.wav" type="audio/wav" />
         </audio>
       </section>
     </section>
@@ -117,8 +134,8 @@
       const layer = document.querySelector(".emoji-effect-layer");
       const profileWrap = document.querySelector(".profile-visual-wrap");
       const keywords = document.querySelectorAll(".hover-keyword");
-      const musicTrigger = document.querySelector("[data-music-trigger]");
-      const musicAudio = document.getElementById("music-preview");
+      const musicTriggers = document.querySelectorAll("[data-music-trigger]");
+      const musicAudios = Array.from(document.querySelectorAll("audio[id^='music-preview']"));
 
       if (!layer || !profileWrap || !keywords.length) return;
 
@@ -132,10 +149,10 @@
         layer.innerHTML = "";
       };
 
-      const stopAudio = () => {
-        if (!musicAudio) return;
-        musicAudio.pause();
-        musicAudio.currentTime = 0;
+      const stopAudio = (audio) => {
+        if (!audio) return;
+        audio.pause();
+        audio.currentTime = 0;
       };
 
       const spawnEffect = (type) => {
@@ -200,58 +217,91 @@
         }
       };
 
-      if (musicTrigger && musicAudio) {
-        let isMusicPlaying = false;
+      if (musicTriggers.length && musicAudios.length) {
+        let activeTrigger = null;
+        let activeAudio = null;
+        const triggerByAudioId = new Map();
+
+        musicTriggers.forEach((trigger) => {
+          const targetId = trigger.dataset.audioTarget;
+          if (targetId) {
+            triggerByAudioId.set(targetId, trigger);
+          }
+          trigger.setAttribute("aria-pressed", "false");
+        });
 
         const restoreIdleEffect = () => {
-          if (isMusicPlaying) {
+          if (activeAudio) {
             spawnEffect("musicClick");
             return;
           }
           clearEffects();
         };
 
-        const playAudio = () => {
-          const playPromise = musicAudio.play();
+        const playAudio = (audio, trigger) => {
+          const playPromise = audio.play();
           if (playPromise && typeof playPromise.catch === "function") {
             playPromise.catch(() => {
-              isMusicPlaying = false;
+              activeAudio = null;
+              activeTrigger = null;
               clearEffects();
-              musicTrigger.setAttribute("aria-pressed", "false");
+              trigger.setAttribute("aria-pressed", "false");
             });
           }
         };
 
-        const startMusic = () => {
-          spawnEffect("musicClick");
-          playAudio();
-          isMusicPlaying = true;
-          musicTrigger.setAttribute("aria-pressed", "true");
-        };
-
         const stopMusic = () => {
+          if (!activeAudio || !activeTrigger) return;
+          stopAudio(activeAudio);
+          activeTrigger.setAttribute("aria-pressed", "false");
+          activeAudio = null;
+          activeTrigger = null;
           clearEffects();
-          stopAudio();
-          isMusicPlaying = false;
-          musicTrigger.setAttribute("aria-pressed", "false");
         };
 
-        const toggleMusic = () => {
-          if (isMusicPlaying) {
+        const startMusic = (trigger, audio) => {
+          if (!trigger || !audio) return;
+          if (activeAudio && activeAudio !== audio) {
+            stopMusic();
+          }
+          spawnEffect("musicClick");
+          activeAudio = audio;
+          activeTrigger = trigger;
+          activeTrigger.setAttribute("aria-pressed", "true");
+          playAudio(audio, trigger);
+        };
+
+        const toggleMusic = (trigger) => {
+          const targetId = trigger.dataset.audioTarget;
+          if (!targetId) return;
+          const audio = document.getElementById(targetId);
+          if (!audio) return;
+
+          if (activeAudio === audio) {
             stopMusic();
             return;
           }
-          startMusic();
+          startMusic(trigger, audio);
         };
 
-        musicTrigger.addEventListener("click", toggleMusic);
-        musicTrigger.addEventListener("keydown", (event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            toggleMusic();
-          }
+        musicTriggers.forEach((trigger) => {
+          trigger.addEventListener("click", () => toggleMusic(trigger));
+          trigger.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              toggleMusic(trigger);
+            }
+          });
         });
-        musicAudio.addEventListener("ended", stopMusic);
+
+        musicAudios.forEach((audio) => {
+          audio.addEventListener("ended", () => {
+            const trigger = triggerByAudioId.get(audio.id);
+            if (trigger && activeTrigger === trigger) {
+              stopMusic();
+            }
+          });
+        });
 
         keywords.forEach((keyword) => {
           const effectType = keyword.dataset.effect;
